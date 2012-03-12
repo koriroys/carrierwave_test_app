@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Address:</b>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency @listing.price, :precision => 0 %>
+</p>
+
+<p>
+  <b>Photos:</b><br />
+  <% @listing.photos.each do |photo| %>
+    <%= link_to image_tag(photo.listing_photo_url(:large).to_s), photo %>
+  <% end %>
+</p>
+<p>
+  <%= link_to "Add Photo", new_photo_url(:photo => {:listing_id => @listing.id}) %>
+</p>
+
+<%#= button_to "Add to team", player_path(:id => player, :player => { :team_id => @team.id}), :method => :put, :action => 'update' %>
+
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

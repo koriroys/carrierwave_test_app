@@ -1,0 +1,35 @@
+<h1>Available properties</h1>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Price</th>
+    <th>Photos</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @listings.each do |listing| %>
+  <tr>
+    <td><%= link_to listing.address, listing %></td>
+    <td><%= number_to_currency listing.price, :precision => 0 %></td>
+    <td>
+      <% number_of_photos = listing.photos.count %>
+      <% if number_of_photos == 0 %>
+        No photos to display
+      <% elsif number_of_photos == 1 %>
+        <%= link_to image_tag(listing.photos.first.listing_photo_url(:thumb).to_s), listing %>
+      <% else %>
+        <%= link_to image_tag(listing.photos.first.listing_photo_url(:thumb).to_s), listing %>
+        <%= link_to "Click for more", listing %>
+      <% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+    <td><%= link_to 'Destroy', listing, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Listing', new_listing_path %>

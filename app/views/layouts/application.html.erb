@@ -6,6 +6,11 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
+<header>
+  <%#= link_to "Photos", photos_url %>
+  <%= link_to "Listings", listings_url %>
+</header>
 <body>
 
 <%= yield %>
