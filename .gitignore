@@ -16,3 +16,6 @@
 
 # Ignore bundler generated file
 Gemfile.lock
+
+# Ignore carrierwave uploads
+public/uploads
